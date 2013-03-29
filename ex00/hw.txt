@@ -1,0 +1,3 @@
+1. http://soj.me/1144
+2. http://soj.me/1814 不用使用类来做。
+3. http://soj.me/1007

@@ -1,0 +1,64 @@
+1. 为了让大家理解成员初始化列表，TA出了这么一道奇葩的题目：有如下两个类X/Y定义，其中类Y的声明以及定义已经帮你写好了，让你自己去把类X的声明跟定义补充完整，X有一个默认构造函数，一个有一个int类型形参的构造函数，给出几组测试样例，大家去思考如何声明并定义X的构造函数。
+class Y {
+    public:
+        Y() {
+            cout << "Y's default constructor" << endl;
+        }
+        Y(int a) {
+            cout << "Y's constructor with argument:" << a << endl;
+        }
+};
+
+class X {
+    public:
+
+    private:
+        Y y;
+};
+假如有如下main函数:
+int main() {
+    X x;
+    cout << endl << endl;
+
+    X x1(1);
+    cout << endl << endl;
+
+    X x2(2);
+
+    return 0;
+}
+则程序输出应该为：
+Y's default constructor
+X's default constructor
+ 
+ 
+Y's constructor with argument:2
+X's constructor with argument:2
+ 
+ 
+Y's constructor with argument:3
+X's constructor with argument:3
+
+2.又是类Date了。。上次作业的Date估计写到让大家怕了，不止你们怕了。。TA也怕了T^T，所以这次不出那么复杂的题目了，这次的要求很简单，类有三个成员:year, month, day，在创建类Date的对象的时候分别为它们赋值，在类Date对象销毁的时候输出日期（输出格式跟上次一样，yyyy年mm月dd日，年占4为，月占2位，日占2位，注意输出的日期后要加换行符），此外，为类Date定义一个友元函数，他的功能也是输出日期，不过它的输出格式是yyyy:mm:dd，年占4为，月占2位，日占2位，注意输出的日期后要加换行符。
+
+类的声明如下：
+
+class Date {
+    public:
+        friend void showDate(const Date& date);
+    public:
+        Date(int year, int month, int day);
+        ~Date();
+    private:
+        int year, month, day;
+};
+
+假设main函数如下：
+int main() {
+    Date date(2006, 1, 1);
+    showDate(date);
+    return 0;
+}
+则程序运行输出的结果为：
+2006:01:01
+2006年01月01日

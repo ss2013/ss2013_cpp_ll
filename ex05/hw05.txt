@@ -30,7 +30,7 @@ int main() {
 则程序输出应该为：
 Y's default constructor
 X's default constructor
- 
+
  
 Y's constructor with argument:2
 X's constructor with argument:2

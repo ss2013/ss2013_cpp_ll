@@ -1,0 +1,74 @@
+1.TA想知道他定义的一个类Item在某个时刻有多少个对象存在。请你补充并实现Item的定义。类Item的部分定义如下：
+
+class Item {
+    public:
+        static int getCounts() ;
+};
+
+2.TA猜大家一定知道什么是栈了，最近学了ADT，于是大家把栈给实现一次吧,本题中，栈的元素类型为int，不会超过100个，而且每个元素的值都大于等于0，类Stack的部分声明如下：
+
+class Stack
+{
+public:
+    Stack();    //创建一个空栈
+
+    bool empty();   //判断栈是否为空
+
+    unsigned int size();    //返回当前栈的大小
+
+    int top();  //返回栈顶元素，若栈为空，返回-1
+
+    bool push(const int& tmp);    //往栈里面添加一个元素，若栈已满，则不做任何操作
+                                  //返回值表示是否添加成功
+    
+    bool pop();     //把栈顶元素移除，若栈为空，则不做任何操作。
+                    //返回值表示是否移除成功
+
+private:
+    static const int MAX_SIZE = 100;
+    int array[MAX_SIZE];
+    int curIdx;
+};
+
+3.这题很简单，主要是想让大家了解一下单例模式，单例模式保证一个类最多有一个实例存在，具体大家自行google。类Singleton的部分声明如下:
+
+class Singleton
+{
+public:
+    static Singleton* getInstance();    //用于获得该类对象
+
+    int getVar() const; //用于返回成员变量var的值
+    void setVar(int);   //用于设置成员变量var的值
+
+private:
+    Singleton();
+
+    static Singleton* instance;
+
+    int var;    //类的一个成员变量，在初始化类对象的时候，var应该设为0
+};
+
+4.大家好像已经学了运算符重载吧，是时候运用一下啦。刚好学到复数这一章，想让你们写个程序完成复数的算数运算，+,-,*,/。注意，不会出现除0的情况。类Complex的部分声明与定义如下，请你补充并完成。
+
+class Complex
+{
+public:
+    Complex(int = 0, int = 0);
+
+    friend ostream& operator <<(ostream&, const Complex&);
+
+private:
+    int real; //实部
+    int imag; //虚部
+};
+
+Complex::Complex(int real, int imag)
+{
+    this->real = real;
+    this->imag = imag;
+}
+
+ostream& operator <<(ostream& out, const Complex& c) {
+    out << c.real << "+" << c.imag << "i";
+    return out;
+}

@@ -1,0 +1,109 @@
+1.TA打算学STL自己封装一下string类型，于是简单的写一个粗糙的版本（当然，跟STL的完全不像），里面主要重载了输出操作符以及下标操作符，一次不小心TA把他重载的那些部分都删掉了，代码只剩下main函数以及类的两个成员变量和一个构造函数，如下所示：
+
+#include <cstring>
+#include <iostream>
+using namespace std;
+
+class String
+{
+public:
+    String(char* s)
+    {
+        len = strlen(s);
+        data = new char[len + 1];
+        memcpy(data, s, sizeof(char) * len);
+    }
+
+private:
+    char* data;
+    int len;
+};
+
+int main(int argc, const char *argv[])
+{
+    String s1("1bc");
+    String s2 = s1;
+    String s3(s1);
+    cout << s1 << endl;
+    cout << s2 << endl;
+    cout << s3 << endl;
+
+    cout << endl;
+
+    s2[0] = '2';
+    s3[0] = '3';
+    cout << s1 << endl;
+    cout << s2 << endl;
+    cout << s3 << endl;
+
+    return 0;
+}
+
+本来他期望输出是：
+1bc
+1bc
+1bc
+
+1bc
+2bc
+3bc
+谁知道输出跟他期望的不一样=。=，输出如下：
+1bc
+1bc
+1bc
+
+2.观察图中的A、B、C三个类的继承关系，根据测试框架的输出(行尾没有空格)，请实现出A、B、C类。
+其中，程序框架为：
+int main()
+{
+    C c1;
+    C c2(1, 2, 3);
+    return 0;
+}
+程序输出为：
+A::A()
+B::B()
+C::C()
+A::A(1)
+B::B(2)
+C::C(3)
+C::~C()
+B::~B()
+A::~A()
+C::~C()
+B::~B()
+A::~A()
+
+根据输出编写编写A/B/C三个类。
+
+3.假定想要定义一个名为 SmallInt 的类，该类实现安全小整数，这个类将使我们能够定义对象以保存与 8 位 unsigned char 同样范围的值，即，0 到 255。试着为类定义转换操作符，使得SmallInt类型的变量支持下面的如下操作：
+SmallInt s_i(2);
+cout << (s_i + 1  ) << endl;
+cout << (2   + s_i) << endl;
+cout << (s_i + s_i) << endl;
+此外，还需要补充类SmallInt的声明和定义。只需要提交类的声明以及定义。
+
+4.上次实验貌似实现了类Complex(复数类)，那这次在类Complex做一下扩展，为类Complex重载输入输出符以及自增自减。其他东西不变，跟上次一样。大家也只需要提交类的声明以及定义就好了。我的测试代码如下：
+
+#include <iostream>
+using namespace std;
+
+int main(int argc, const char *argv[])
+{
+    int cases;
+    cin >> cases;
+
+    Complex c;
+    while (cases--)
+    {
+        cin >> c;
+        cout << c << endl;
+        cout << (c++) << endl;
+        cout << (++c) << endl;
+        cout << (c--) << endl;
+        cout << (--c) << endl;
+    }
+
+    return 0;
+}
+

@@ -1,0 +1,121 @@
+1.TA从小就喜欢小动物，也喜欢大动物（其实大小动物怎么区分？）。所以他特别喜欢狗，因为狗可以很大只，也可以很正太。但是作为一名屌丝，他并不知道狗有多少类，他只是用颜色去区分狗，比如小黄/小白/小黑，有一天他做梦自己养了很多狗，于是他对这些狗按颜色（只有黄/白/黑三种颜色的狗）训练，使得不同颜色的狗有不同的叫法。请你根据框架输出来完成这些狗的类。
+
+框架:
+int main(int argc, const char *argv[])
+{
+    Dog* dog = new YellowDog();
+    dog->bark();
+    delete dog;
+ 
+    dog = new BlackDog();
+    dog->bark();
+    delete dog;
+ 
+    dog = new WhiteDog();
+    dog->bark();
+    delete dog;
+ 
+    return 0;
+}
+
+输出：
+YYYYellow
+BBBBlack
+WWWWhite
+
+2.有A/B/C/D四个类，A为B和C的基类，D继承B和C，类A/B/C/D分别有int类型的成员变量a/b/c/d，其中类A的部分声明如下：
+    class A
+    {
+    public:
+        int a;
+    };
+观察下面框架以及输出，写出A/B/C/D三个类的声明以及定义。
+int main(int argc, const char *argv[])
+{
+    A* a = new A(1);
+    delete a;
+    cout << endl << endl;
+
+    a = new B(2, 3);
+    delete a;
+    cout << endl << endl;
+
+    a = new C(4, 5);
+    delete a;
+    cout << endl << endl;
+
+    a = new D(6, 7, 8, 9);
+    delete a;
+
+    return 0;
+}
+
+输出：
+A::a = 1
+
+
+A::a = 2
+B::b = 3
+A::a = 2
+
+
+A::a = 4
+C::c = 5
+A::a = 4
+
+
+A::a = 6
+B::b = 7
+C::c = 8
+D::d = 9
+A::a = 6
+C::c = 8
+A::a = 6
+B::b = 7
+A::a = 6
+
+3.py是个学渣，高数是格外的渣。还好他程序写的好，对于算不出来的积分他通通用计算机去算。
+有基类如下：
+
+class Base
+{
+protected:
+       double result, a, b, step;//result积分值，a积分下限，b积分上限，step步长即公式中，step=(b-a)/n
+       int n;//分区数即公式中的n
+
+public:
+       virtual double fun(double x) = 0;//被积函数，声明为纯虚函数，由子类引入
+       virtual void integrate(){}
+       Base(double aa=0, double bb=0, int nn=100):a(aa),b(bb),n(nn),result(0.0){}
+       void print()
+       {
+              cout<<result<<endl;
+       }
+};
+
+从基类派生出矩形法类（Rectangle），该类重定义函数integrate()，它采用矩形法做积分运算。
+从基类派生出梯形法类（Ladder）和辛普森法类（Simpson），功能相似。
+请编程，用三种方法对下列被积函数
+       sin(x)，下限为0.0，上限为；
+进行定积分计算。
+
+主函数测试代码如下：
+
+Base* bp;
+
+bp = new Rectangle(0.0, 3.14159/2.0, 100);
+bp-> integrate();
+bp->print();
+
+bp = new Ladder(0.0, 3.14159/2.0, 100);
+bp-> integrate();
+bp->print();
+
+bp = new Simpson(0.0, 3.14159/2.0, 100);
+bp-> integrate();
+bp->print();
+
+则输出为
+1.00783
+0.999978
+0.999999

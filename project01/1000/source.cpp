@@ -6,7 +6,7 @@
  *    Description:
  *
  *        Version:  1.0
- *        Created:  04/15/2013 01:04:54 PM 
+ *        Created:  04/15/2013 01:04:54 PM
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -16,7 +16,6 @@
  * =====================================================================================
  */
 #include <iostream>
-#include <fstream>
 #include <string>
 #include <deque>
 using namespace std;
@@ -36,12 +35,12 @@ public:
     Integer& operator =(const Integer&);
 
     // 比较操作符 {
-    friend bool operator ==(const Integer&, const Integer&);
-    friend bool operator !=(const Integer&, const Integer&);
-    friend bool operator < (const Integer&, const Integer&);
-    friend bool operator <=(const Integer&, const Integer&);
-    friend bool operator > (const Integer&, const Integer&);
-    friend bool operator >=(const Integer&, const Integer&);
+    friend const bool operator ==(const Integer&, const Integer&);
+    friend const bool operator !=(const Integer&, const Integer&);
+    friend const bool operator < (const Integer&, const Integer&);
+    friend const bool operator <=(const Integer&, const Integer&);
+    friend const bool operator > (const Integer&, const Integer&);
+    friend const bool operator >=(const Integer&, const Integer&);
     // }
 
 
@@ -60,11 +59,11 @@ public:
 
 
     // 复合赋值操作符号 {
-    void operator +=(const Integer&);
-    void operator -=(const Integer&);
-    void operator *=(const Integer&);
-    void operator /=(const Integer&);
-    void operator %=(const Integer&);
+    Integer& operator +=(const Integer&);
+    Integer& operator -=(const Integer&);
+    Integer& operator *=(const Integer&);
+    Integer& operator /=(const Integer&);
+    Integer& operator %=(const Integer&);
     // }
 
 
@@ -95,7 +94,6 @@ private:
     CmpResult cmpTo(const Integer& a) const;
     CmpResult cmpData(const deque<int>&, const deque<int>&) const;
 
-    // 清除前导0
     void removeLeadingZeros();
 
     deque<int> data;
@@ -144,6 +142,7 @@ Integer::Integer(const string& s)
         data.push_back(s[0] - '0');
     }
 
+    // 清除前导0
     removeLeadingZeros();
 }
 
@@ -159,37 +158,37 @@ Integer& Integer::operator =(const Integer& a)
     sign = a.sign;
     data.clear();
     data = a.data;
-    return (*this);
+    return *this;
 }
 
 
 // 比较操作符 {
-bool operator ==(const Integer& a, const Integer& b)
+const bool operator ==(const Integer& a, const Integer& b)
 {
     return ((a.sign == b.sign) && (a.data == b.data));
 }
 
-bool operator !=(const Integer& a, const Integer& b)
+const bool operator !=(const Integer& a, const Integer& b)
 {
     return !operator ==(a, b);
 }
 
-bool operator < (const Integer& a, const Integer& b)
+const bool operator < (const Integer& a, const Integer& b)
 {
     return (a.cmpTo(b) == _less);
 }
 
-bool operator <=(const Integer& a, const Integer& b)
+const bool operator <=(const Integer& a, const Integer& b)
 {
     return (a.cmpTo(b) != _greater);
 }
 
-bool operator > (const Integer& a, const Integer& b)
+const bool operator > (const Integer& a, const Integer& b)
 {
     return (a.cmpTo(b) == _greater);
 }
 
-bool operator >=(const Integer& a, const Integer& b)
+const bool operator >=(const Integer& a, const Integer& b)
 {
     return (a.cmpTo(b) != _less);
 }
@@ -239,22 +238,22 @@ Integer Integer::operator -() const
     return ans;
 }
 
-void Integer::operator +=(const Integer& a)
+Integer& Integer::operator +=(const Integer& a)
 {
     if (sign == _zero)
     {
         (*this) = a;
-        return;
+        return *this;
     }
-    else if (a.sign == _zero)
+    if (a.sign == _zero)
     {
-        return;
+        return *this;
     }
 
     if (sign == a.sign)
     {
         add(deque<int>(data), a.data);
-        return;
+        return *this;
     }
 
     switch (cmpData(data, a.data))
@@ -273,22 +272,23 @@ void Integer::operator +=(const Integer& a)
         subtract(deque<int>(data), a.data);
         break;
     }
+    return *this;
 }
 
-void Integer::operator -=(const Integer& a)
+Integer& Integer::operator -=(const Integer& a)
 {
     sign = Sign(-sign);
     (*this) += a;
     sign = Sign(-sign);
 }
 
-void Integer::operator *=(const Integer& a)
+Integer& Integer::operator *=(const Integer& a)
 {
     if (sign == _zero || a.sign == _zero)
     {
         sign = _zero;
         data.clear();
-        return;
+        return *this;
     }
 
     sign = (sign == a.sign) ? _positive : _negative;
@@ -321,30 +321,33 @@ void Integer::operator *=(const Integer& a)
     }
     data.resize(i + j - 1);
     data.assign(tmp, tmp + i + j - 1);
+    return *this;
 }
 
-void Integer::operator /=(const Integer& a)
+Integer& Integer::operator /=(const Integer& a)
 {
     if (sign == _zero || a.sign == _zero)
     {
         sign = _zero;
         data.clear();
-        return ;
+        return *this;
     }
 
     (*this).data = divide(a.data);
     removeLeadingZeros();
+    return *this;
 }
 
-void Integer::operator %=(const Integer& a)
+Integer& Integer::operator %=(const Integer& a)
 {
     if (sign == _zero || a.sign == _zero)
     {
-        return ;
+        return *this;
     }
 
     divide(a.data);
     removeLeadingZeros();
+    return *this;
 }
 
 // 自增/自减运算符
@@ -567,6 +570,28 @@ deque<int> Integer::divide(const deque<int>& divisor)
         }
     }
     data = tmp.data;
+    //while (cmpData(data, divisor) != _less)
+    //{
+    //    Integer tmp;
+    //    tmp.sign = _positive;
+    //    while (cmpData(tmp.data, divisor) == _less)
+    //    {
+    //        tmp.data.push_front(data.back());
+    //        data.pop_back();
+    //    }
 
+    //    quotients.push_front(0);
+    //    while (cmpData(tmp.data, divisor) != _less)
+    //    {
+    //        tmp.subtract(deque<int>(tmp.data), divisor);
+    //        quotients.front()++;
+    //    }
+
+    //    while (!tmp.data.empty())
+    //    {
+    //        data.push_back(tmp.data.front());
+    //        tmp.data.pop_front();
+    //    }
+    //}
     return quotients;
 }

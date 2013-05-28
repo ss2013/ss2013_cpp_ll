@@ -1,0 +1,46 @@
+1. 观察测试程序以及输入/输出，补全程序并给出输出。提交的时候只需要提交你新增打代码即可。输入数据第一行为测试样例t，接下来打t行中每一行分别是两个整数n和num，其中2 <= n < 10。
+
+测试程序：
+include <iostream>                                                                                              
+using namespace std;
+
+#include "source.cpp"
+
+int main(int argc, char const* argv[])
+{
+    Base_N base_default;
+    cout << base_default(123) << endl;
+    cout << endl;
+
+    Base_N base_n(2);
+    cout << base_n(123) << endl;
+    cout << base_n(100) << endl;
+    cout << endl;
+
+    int cases;
+    int n, num;
+    cin >> cases;
+    while (cases--)
+    {   
+        cin >> n >> num;
+        base_n.setBase(n);
+        cout << base_n(num) << endl;
+    }   
+
+    return 0;
+}
+
+输入:
+2
+3 123
+8 123
+
+输出：
+1111011
+
+1111011
+1100100
+
+11120
+173
+

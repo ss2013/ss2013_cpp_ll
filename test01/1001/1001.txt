@@ -1,0 +1,20 @@
+2. seriesComp
+
+The declaration of class seriesComp is shown as follows.
+ 
+#include <iostream>
+using namespace std;
+ 
+class seriesComp{
+ 
+private:
+	int n;       // n>=1
+public:
+	seriesComp(int n);
+	int sum();
+	int fib();
+};
+ 
+Member function sum() is to calculate and return the result of 1+2+3+……+n.
+Member function fib() is to calculate and return the summation of the front n items in Fibonacci sequence.
+Please implement this class. 

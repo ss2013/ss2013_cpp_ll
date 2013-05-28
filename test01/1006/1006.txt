@@ -1,0 +1,44 @@
+7. Inservice
+
+The declaration of a class named Person is shown as follows.
+class Person{
+public:
+    Person(){ cout << "Construct Person" << endl;}
+    ~Person(){ cout << "Destruct Person" << endl;}
+public:
+    string name;      //person’s name
+　　int sex;           //1--male, 0—female
+};
+
+Class Student, Worker and InService are direct derived and indirect derived classes of Person. Student has attributes of name, sex, and sno. Worker has attributes of name, sex and wno. sno and wno are the student number and the worker number respectively.
+Please use inheritance or virtual inheritance to implement Student, Worker and InService so that they satisfy the following main function.
+
+int main()
+{
+    InService is;
+    is.name = "name";
+    is.sex = 0;
+    is.sno = "10390000";
+    is.wno = "10990000";
+    cout << ((Person*)(&is))->name << endl;
+    cout << ((Person*)(&is))->sex << endl;
+    cout << ((Student*)(&is))->sno << endl;
+    cout << ((Worker*)(&is))->wno << endl;
+    return 0;
+}
+
+Outputs:
+
+Construct Person
+Construct Student
+Construct Worker
+Construct InService
+name
+0
+10390000
+10990000
+Destruct InService
+Destruct Worker
+Destruct Student
+Destruct Person
+

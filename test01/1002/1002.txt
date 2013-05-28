@@ -1,0 +1,11 @@
+Frequency
+
+This is a template function, its prototype is as follows.
+　　void frequency(T arr[], int len);
+　　
+Please complete this function. It outputs the number of occurrences of the numbers in the array ordered by the numbers(from small to big).
+
+For example, a[3] = {1, 2, 1};
+Then, the result will be
+1 2
+2 1

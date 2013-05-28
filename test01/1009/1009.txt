@@ -1,0 +1,13 @@
+10. 24 Points
+
+Given 4 integers you are required to use them and operations of add(+), substract(-), multiplication(*) and division(/) to form an expression which has the result of 24. Each of these 4 integers can be used ONCE and ONLY ONCE in the expression. For example give 1, 2, 3 and 4, 24 can be obtained by 
+　　1*2*3*4 = 24；2*3*4/1 = 24；(1+2+3)*4=24；……
+But there are also cases in which 24 can not be obtained, e.g., when the 4 integers are 1, 1, 1 and 1.
+Now given four integers, you are required to write a program to determine whether or not 24 can be obtained. It is assumed that division with a fractional result is illegal, e.g. 1/4 is prohibited here.
+
+Input
+Multiple cases. 4 integers between 0~10 in each case. 
+
+Output
+YES is output in one line for one case if 24 can be obtained in that case; otherwise NO is output.
+

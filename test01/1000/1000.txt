@@ -1,0 +1,11 @@
+1. Mr. Wong's trouble
+ 
+Mr. Wong arranged an assignment for the students in which they were divided into groups of 3 or 4. And now there comes a trouble. Mr. Wong has given score to each student and he wants to know the highest score of each group. He has finished a main function as follows. However, he does not know how to implement the function getMaxScore that returns the highest score of a group. Please help Mr. Wong to implement and submit function getMaxScore. Function main is not needed for submission.
+
+int main()
+{
+    cout<< getMaxScore(98, 95, 84, 89) << endl;
+    cout << getMaxScore(73, 85, 90) << endl;
+    return 0;
+}
+

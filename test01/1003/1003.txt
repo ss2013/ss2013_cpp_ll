@@ -1,0 +1,23 @@
+4. Parentheses Matching Test
+
+Parentheses are widely used in expressions, like 1+((1+2)*3*(10-9)). We all know that they should always appear in pairs, and the left parenthesis of a pair must appear on the left side of the left parenthesis.  For example the following is a wrong expression: 
+1+2(；((1+2)*3；
+Unfortunately Mr. Wong found many unmatched parentheses in the students’ assignments. However, he didn’t want to pick them out manually. Instead he wishes you write a program to help him quickly determine whether or not the parentheses are matched in those expressions. (It is assumed that there may be parentheses matching problem ONLY; other parts of the expression are assumed to be correct.)
+
+Input
+Several cases are used as input. There is one expression in each case. The expression is a string of no more than 100 characters.
+
+Output
+Yes is printed if the parentheses are matched in the expression; otherwise No is printed.
+Yes or No is printed for each case in one line.
+
+Sample Input
+1+((1+2)*3*(10-9))
+)1+2(
+((1+2)*3
+
+Sample Output
+Yes
+No
+No
+

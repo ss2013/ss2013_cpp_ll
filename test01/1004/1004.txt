@@ -1,0 +1,20 @@
+5. Chain Call
+As shown in the following code segment, op is an object of class Number. Please implement Number in which you should:
+write the member functions of add and sub with one int parameter respectively. 
+write a constructor with one int parameter.
+write a print function to print the result.
+
+Number op(1);
+op.add(2).sub(3).add(4)
+op.print();   // output：4
+
+
+Sample Input
+Sample Test
+    Number n(1);
+    n.add(2).sub(3).add(4);
+    n.print();
+    
+Sample Output
+4
+

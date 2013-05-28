@@ -1,0 +1,5 @@
+9. Template
+When gt(a,b) is invoked, and a and b are of built-in types, then true is returned if a>b, otherwise false is returned. a and b are assumed to be of the same type.
+When gt(a,b) is invoked, and a and b are pointers, then true is returned if *a>*b, otherwise false is returned. a and b are assumbed to be of the same type.
+When gt(a,b) is invoked, and a and b are of C strings, then true is returned if a>b, otherwise false is returned.
+Please write functions or templates to satisfy the above scenarios.

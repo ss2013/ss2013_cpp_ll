@@ -1,0 +1,41 @@
+6. Complex
+
+Please implement the Complex class.
+#include <iostream>
+#include <stdio.h>
+using namespace std;
+
+class Complex{
+private:
+	double real, imag;
+public:
+	Complex(const double& real = 0.0, const double& imag = 0.0);
+	Complex(const Complex& otherComplex);
+
+	Complex operator + (const Complex& otherComplex);
+	Complex operator - (const Complex& otherComplex);
+	Complex operator * (const Complex& otherComplex);
+	Complex operator / (const Complex& otherComplex);  //除法不考虑分母为0的情况
+
+	Complex& operator = (const Complex& otherComplex);
+	Complex& operator += (const Complex& otherComplex);
+	Complex& operator -= (const Complex& otherComplex);
+	Complex& operator *= (const Complex& otherComplex);
+	Complex& operator /= (const Complex& otherComplex);//除法不考虑分母为0的情况
+
+
+	//实部虚部各自加1
+	Complex& operator++();//前置++
+	Complex operator++(int n);//后置++
+
+	//实部虚部各自减1
+	Complex& operator--();//前置--
+	Complex operator--(int n);//后置--
+
+	bool operator == (const Complex& otherComplex);
+	bool operator != (const Complex& otherComplex);
+
+/*	当real = 0, image = -1的时候按照习惯理应输出： -j，还有负数等等问题
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　	为了简化问题，我们这里不考虑输出格式问题，直接打印0.0000 + j-1.0000即可（小数一定保留4位！注意加号旁边有空格！）  */
+	void print();
+};

@@ -1,0 +1,34 @@
+This is a dictionary class Dict. It supports word definition (the words are case insensitive). Now please complete many appropriate functions to achieve the following requirements(d is an object of the class Dict):
+(1) d[“pixel”] = “picture element”;
+This operation shows the definition of pixel is “picture element”. 
+The following statement:
+cout<< d[“pixel”];
+will print the definition of the word pixel, if the word is not in the dictionary, print “*** not in dictionary”;
+(2) d.remove(“pixel”);
+    This operation will delete the word pixel and its definition from the dictionary.
+(3) d.size();
+This operation will get the size of the dictionary(how many words are there in the dictionary).
+(4)cout<<d;
+This operation will output all the words and their definition in the dictionary in lexicographic order of the words.
+
+For example：
+    d[“pixel”] = “picture element”;
+    d[“set”] = “math element”;
+    cout<<d[“pixel”]<<endl;
+    cout<<d[“SET”]<<endl;
+    cout<<d[“java”]<<endl;
+    d.remove(“pixel”);
+    d[“java”] = “computer element”;
+    cout<<d[“pixel”]<<endl;
+    cout<<d.size()<<endl;
+    cout<<d;
+
+The result：
+    picture element
+    math element
+    *** not in dictionary
+    *** not in dictionary
+    2
+    java->computer element
+    set->math element
+

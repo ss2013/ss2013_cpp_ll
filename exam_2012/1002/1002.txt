@@ -1,0 +1,17 @@
+In a inheritance hierarchy, there are a base class Base, which has a function print() that can print its class name, and another class Derived which is a subclass of Base.
+Now please complete an appropriate inheritance hierarchy and corresponding member function, make it meet the result of the following procedures:
+
+    Base *pTest1 = new Base;
+    Base *pTest2 = new Derived;
+    pTest1->print();
+    pTest2->print();
+    delete pTest1;
+    delete pTest2;
+
+The corresponding output:
+    Base
+    Derived
+    Base destruct
+    Derived destruct
+    Base destruct
+

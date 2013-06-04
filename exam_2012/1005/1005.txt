@@ -1,0 +1,32 @@
+Design an exception abstract class Exception.
+It has a virtual function PrintError() to print exception error of derived class. Derived class OutOfMemery will print error information “Out of Memory!!” in the PrintError() function.
+Derived class RangeError will print error information like “Number out of range. You used 5000 !” in the PrintError() function.
+Implement all the three class defined below.
+ 
+    class Exception
+    {
+    public:
+        Exception();
+        virtual ~Exception();
+        virtual void PrintError() = 0;
+    };
+     
+    class OutOfMemory : public Exception
+    {
+    public:
+        OutOfMemory();
+        ~OutOfMemory();
+        virtual void PrintError();
+    };
+     
+    class RangeError : public Exception
+    {
+    public:
+        RangeError(unsigned long number);
+        ~RangeError(){}
+        virtual void PrintError();
+        virtual unsigned long GetNumber();
+        virtual void SetNumber(unsigned long);
+    private:
+        unsigned long BadNum;
+    }; 

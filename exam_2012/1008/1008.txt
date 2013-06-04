@@ -1,0 +1,9 @@
+YoungTableau is a special matrix, every row of the matrix increases, every column of the matrix increases. In other words, YoungTableau[i][j]< YoungTableau[i+1][j] and YoungTableau [i][j]< YoungTableau [i][j+1].
+
+    1 2 4 5
+    2 3 5 8
+    3 5 7 9
+
+The matrix above is a Young Tableau.
+Singa wants to know whether a target integer is in the matrix or not. Could you help him?
+You should write a function bool check(int YoungTableau[][1000],int row, int target), where the first parameter means the matrix , the second means row of the matrix, and the third means the target integer. Column of the matrix is always 1000. Return true if the target is in the matrix. Otherwise, return false.

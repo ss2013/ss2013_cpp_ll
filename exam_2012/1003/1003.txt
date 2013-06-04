@@ -1,0 +1,18 @@
+Account is model of bank account. Every object has account name and balance. Different account has different name.  Use a static member to record the number of all accounts.
+Please complete the class defined below.
+
+　　　class Account
+　　　{
+　　　public:
+　　　    Account(string,double); //set name and balance
+　　　    static void getCount( ); //get count of accounts
+　　　    void setName(string); //set account name
+　　　    void setBalance(double); //set balance
+　　　    string getName() const; //const function, get account name 
+　　　    double getBalance() const; // const function, get account balance 
+　　　    ~Account(); //destructor function
+　　　private:
+　　　    string name;
+　　　    double balance;
+　　　　static int count;
+　　　};

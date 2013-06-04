@@ -1,0 +1,14 @@
+Every student has a unique student id at school. So we could define map<int,string>, where key is student id and value is student name. Please complete the class defined below.
+    class student
+    {
+    private:
+        map<int,string> stu;
+    public:
+        void reg(int,string);
+        bool graduate(int,string);
+        string findName(int);
+    };
+ 
+reg is a function to register a student.
+graduate means a student will graduate if it exists, then delete it’s information and return true. Otherwise, the function does nothing and returns false.
+findName is a function to find a student’s name by student id. Return the student’s name if it exists, otherwise return a null string “”. 

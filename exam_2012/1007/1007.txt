@@ -1,0 +1,19 @@
+There is a class named Calculator. It has a member function getResult() which can calculate the value of the expression. Please complete the design and implementation of the class.
+Something you should be noticed:
+(1)The expression includes only digits and symbol +, -, *, /, (, and ).
+(2)The expression is guaranteed to be valid.
+
+Notice: The operation / is like the division in our code. For example, 3/4=0 and 6/5=1.
+
+For example:
+    Calculator c;
+    cout<<c.getResult(“25/5+4”)<<endl;
+    cout<<c.getResult(“(3+4)*5”)<<endl;
+    cout<<c.getResult(“3/4+1”)<<endl;
+    cout<<c.getResult(“2*20+1”)<<endl;
+
+The result:
+    9
+    35
+    1
+    41

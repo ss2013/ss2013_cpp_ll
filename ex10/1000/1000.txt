@@ -1,0 +1,52 @@
+完成以下Stack(后进先出)的声明跟定义。
+    template<class T>
+    class Stack
+    {
+    public:
+        explicit Stack();
+        bool empty() const;
+        int size() const;
+        T& top();
+        const T& top() const;
+        void push(const T& x);
+        void pop();
+    };
+ 
+其中Stack的最大容量是5，当Stack中有5个元素的时候，若再次使用push()函数，假设要圧栈元素为a，要栈顶元素为b，若a > b，则栈顶元素b出栈，把a圧进栈里面，若a <= b，则不做任何操作，如下面程序片：
+ 
+Stack<int> s;
+for(int i = 10; i < 15; i++) {
+    s.push(i);    
+}
+cout << s.size() << endl;
+s.push(12);
+cout << s.top() << endl;
+cout << s.size() << endl;
+s.push(16);
+cout << s.top() << endl;
+cout << s.size() << endl;
+ 
+应该输出：
+5
+14
+5
+16
+5
+ 
+此外，若执行pop()操作时，栈内无元素的话，则应该抛出一个double类型异常，若执行top()操作的时候，若栈内无元素，则应该抛出一个int类型异常，如下面程序片：
+Stack<int> s;
+try {
+    s.top();
+} catch (int) {
+    cout << "get top failed" << endl;
+}
+try {
+    s.pop();
+} catch (double) {
+    cout << "pop failed" << endl;
+}
+ 
+应该输出：
+get top failed
+pop failed
+ 

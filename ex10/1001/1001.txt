@@ -1,0 +1,33 @@
+在上一题的基础上，观察下面的程序片以及输出，完成类X的声明跟定义，此外，对Stack类进行完善。
+
+ 
+	Stack<X> s;
+	if (s)
+		cout << "stack is not empty" << endl;
+	else
+		cout << "stack is empty" << endl;
+ 
+	for (int i = 0; i < 5; i++)
+	{
+		X x(i);
+		s.push(x);
+	}
+ 
+	X x1(3);
+	s.push(x1);
+	cout << s.top() << endl;
+ 
+	X x2(6);
+	s.push(x2);
+	cout << s.top() << endl;
+ 
+	if (s)
+		cout << "stack is not empty" << endl;
+	else
+		cout << "stack is empty" << endl;
+ 
+应该输出：
+stack is empty
+4
+6
+stack is not empty
